@@ -94,7 +94,7 @@ export function ChatView() {
           <div className="text-center text-xs text-muted-foreground mb-4">
             Punter V1.0.2
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             {mockMessages.map((msg, index) => (
               <div key={index}>
                 {msg.type === "user" && (
@@ -116,7 +116,7 @@ export function ChatView() {
                         <p className="leading-snug">{msg.text}</p>
                       </div>
                       <div
-                        className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory"
+                        className="flex gap-2 overflow-x-auto pb-2 mt-2 snap-x snap-mandatory"
                         style={{
                           WebkitOverflowScrolling: "touch",
                           overscrollBehaviorX: "contain",
