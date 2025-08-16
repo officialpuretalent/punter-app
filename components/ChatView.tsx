@@ -115,14 +115,34 @@ export function ChatView() {
                         </div>
                         <p className="leading-snug">{msg.text}</p>
                       </div>
-                      <div className="flex gap-3 pb-2 overflow-x-auto">
+                      <div
+                        className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory pr-4"
+                        style={{
+                          WebkitOverflowScrolling: "touch",
+                          overscrollBehaviorX: "contain",
+                          // ensure the scroll snap/gutter respects iOS safe area
+                          paddingInlineEnd:
+                            "max(env(safe-area-inset-right),1rem)",
+                          scrollPaddingInlineEnd:
+                            "max(env(safe-area-inset-right),1rem)",
+                        }}
+                        role="list"
+                        aria-label="Bookmakers"
+                      >
                         {msg.oddsData?.map((operator) => (
-                          <OperatorCard
+                          <div
                             key={operator.name}
-                            operator={operator}
-                            onSelect={handleOperatorSelect}
-                          />
+                            className="flex-none snap-start"
+                          >
+                            <OperatorCard
+                              operator={operator}
+                              onSelect={handleOperatorSelect}
+                            />
+                          </div>
                         ))}
+
+                        {/* End spacer so the last card never kisses the edge even when parent padding changes */}
+                        <div aria-hidden className="flex-none w-2 sm:w-4" />
                       </div>
                     </div>
                   </div>
