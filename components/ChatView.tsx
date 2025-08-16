@@ -105,7 +105,7 @@ export function ChatView() {
               {msg.type === "ai" && (
                 <div className="relative">
                   <div className="flex flex-col w-full gap-2">
-                    <div className="bg-slate-100 text-foreground p-4 rounded-2xl rounded-bl-lg mr-24 flex gap-3">
+                    <div className="bg-slate-100 text-foreground p-4 rounded-2xl rounded-bl-lg max-w-[80%] flex gap-3">
                       <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 shrink-0">
                         <span className="text-sm text-white text-semibold">
                           P
