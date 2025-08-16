@@ -14,7 +14,9 @@ export function OperatorCard({ operator, onSelect }: OperatorCardProps) {
   return (
     <div
       onClick={() => onSelect(operator)}
-      className="flex-shrink-0 w-32 sm:w-36 overflow-hidden border rounded-2xl bg-card shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+      // Increased width for better readability and touch targets on mobile.
+      // Was: w-32 sm:w-36
+      className="flex-shrink-0 w-36 sm:w-40 overflow-hidden border rounded-2xl bg-card shadow-sm cursor-pointer hover:shadow-md transition-shadow"
     >
       {/* Top section with background image */}
       <div
