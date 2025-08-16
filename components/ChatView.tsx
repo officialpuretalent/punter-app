@@ -36,6 +36,35 @@ const mockMessages = [
       },
     ],
   },
+  // Adding more messages to demonstrate scrolling
+  {
+    type: "user",
+    text: "Thanks! Can you show me the payout for a R250 stake?",
+  },
+  {
+    type: "ai",
+    text: "Of course, I've updated the potential payouts for a R250 stake on each of the bookmakers.",
+    oddsData: [
+      {
+        name: "Playa Bets",
+        bannerImageUrl: "/operator-banner/playa-bets-banner.png",
+        displayOdds: 22.63,
+        stake: 250,
+      },
+      {
+        name: "Betway",
+        bannerImageUrl: "/operator-banner/betway-banner.jpg",
+        displayOdds: 22.2,
+        stake: 250,
+      },
+      {
+        name: "Hollywoodbets",
+        bannerImageUrl: "/operator-banner/hollywoodbets-banner.jpg",
+        displayOdds: 21.93,
+        stake: 250,
+      },
+    ],
+  },
 ];
 
 export function ChatView() {
@@ -48,7 +77,7 @@ export function ChatView() {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      {/* Header is unchanged */}
+      {/* Header is unchanged - it will be sticky */}
       <header className="flex items-center justify-between p-4 border-b shrink-0">
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600">
@@ -58,7 +87,8 @@ export function ChatView() {
         </div>
       </header>
 
-      <ScrollArea className="flex-1 p-4">
+      {/* THE ONLY CHANGE IS HERE: We add min-h-0 to the ScrollArea */}
+      <ScrollArea className="flex-1 p-4 min-h-0">
         <div className="text-center text-xs text-muted-foreground mb-4">
           Punter V1.0.2
         </div>
@@ -76,9 +106,11 @@ export function ChatView() {
                 <div className="relative">
                   <div className="flex flex-col w-full gap-2">
                     <div className="bg-slate-100 text-foreground p-4 rounded-2xl rounded-bl-lg mr-24 flex gap-3">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 shrink-0">
-                            <span className="text-sm text-white text-semibold">P</span>
-                        </div>
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 shrink-0">
+                        <span className="text-sm text-white text-semibold">
+                          P
+                        </span>
+                      </div>
                       <p className="leading-snug">{msg.text}</p>
                     </div>
                     <div className="flex gap-3 pb-2 overflow-x-auto">
@@ -98,7 +130,7 @@ export function ChatView() {
         </div>
       </ScrollArea>
 
-      {/* Footer is unchanged */}
+      {/* Chat Area - it will be sticky */}
       <footer className="p-4 border-t bg-background shrink-0">
         <div className="flex items-center w-full px-2 border rounded-xl bg-slate-100">
           <Input
