@@ -87,46 +87,49 @@ export function ChatView() {
         </div>
       </header>
 
-      {/* THE ONLY CHANGE IS HERE: We add min-h-0 to the ScrollArea */}
-      <ScrollArea className="flex-1 p-4 min-h-0">
-        <div className="text-center text-xs text-muted-foreground mb-4">
-          Punter V1.0.2
-        </div>
-        <div className="flex flex-col gap-6">
-          {mockMessages.map((msg, index) => (
-            <div key={index}>
-              {msg.type === "user" && (
-                <div className="flex justify-end">
-                  <div className="max-w-[80%] bg-blue-600 text-white p-4 rounded-2xl rounded-br-lg">
-                    <p className="leading-snug">{msg.text}</p>
-                  </div>
-                </div>
-              )}
-              {msg.type === "ai" && (
-                <div className="relative">
-                  <div className="flex flex-col w-full gap-2">
-                    <div className="bg-slate-100 text-foreground p-4 rounded-2xl rounded-bl-lg max-w-[80%] flex gap-3">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 shrink-0">
-                        <span className="text-sm text-white text-semibold">
-                          P
-                        </span>
-                      </div>
+      {/* We remove padding from the ScrollArea and apply it to an inner div */}
+      <ScrollArea className="flex-1 min-h-0">
+        {/* This wrapper div ensures consistent padding for all content */}
+        <div className="p-4">
+          <div className="text-center text-xs text-muted-foreground mb-4">
+            Punter V1.0.2
+          </div>
+          <div className="flex flex-col gap-6">
+            {mockMessages.map((msg, index) => (
+              <div key={index}>
+                {msg.type === "user" && (
+                  <div className="flex justify-end">
+                    <div className="max-w-[80%] bg-blue-600 text-white p-4 rounded-2xl rounded-br-lg">
                       <p className="leading-snug">{msg.text}</p>
                     </div>
-                    <div className="flex gap-3 pb-2 overflow-x-auto">
-                      {msg.oddsData?.map((operator) => (
-                        <OperatorCard
-                          key={operator.name}
-                          operator={operator}
-                          onSelect={handleOperatorSelect}
-                        />
-                      ))}
+                  </div>
+                )}
+                {msg.type === "ai" && (
+                  <div className="relative">
+                    <div className="flex flex-col w-full gap-2">
+                      <div className="bg-slate-100 text-foreground p-4 rounded-2xl rounded-bl-lg max-w-[80%] flex gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 shrink-0">
+                          <span className="text-sm text-white text-semibold">
+                            P
+                          </span>
+                        </div>
+                        <p className="leading-snug">{msg.text}</p>
+                      </div>
+                      <div className="flex gap-3 pb-2 overflow-x-auto">
+                        {msg.oddsData?.map((operator) => (
+                          <OperatorCard
+                            key={operator.name}
+                            operator={operator}
+                            onSelect={handleOperatorSelect}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </ScrollArea>
 
