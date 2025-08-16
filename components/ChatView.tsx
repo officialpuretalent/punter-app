@@ -116,11 +116,10 @@ export function ChatView() {
                         <p className="leading-snug">{msg.text}</p>
                       </div>
                       <div
-                        className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory pr-4"
+                        className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory"
                         style={{
                           WebkitOverflowScrolling: "touch",
                           overscrollBehaviorX: "contain",
-                          // ensure the scroll snap/gutter respects iOS safe area
                           paddingInlineEnd:
                             "max(env(safe-area-inset-right),1rem)",
                           scrollPaddingInlineEnd:
@@ -140,9 +139,7 @@ export function ChatView() {
                             />
                           </div>
                         ))}
-
-                        {/* End spacer so the last card never kisses the edge even when parent padding changes */}
-                        <div aria-hidden className="flex-none w-2 sm:w-4" />
+                        <div aria-hidden className="flex-none w-4" />
                       </div>
                     </div>
                   </div>
